@@ -26,4 +26,25 @@ router.post('/', async (req,res) => {
   }
 });
 
+// GET /api/projects
+router.get('/', async (req,res) => {
+  try{
+    const projects = await Project.find({})
+
+    res.json(projects);
+    console.log("Here are the projects!", projects)
+  } catch(err) {
+
+    res.json(500).json(err);
+    console.log(err.message,"Projects seem to be missing")
+  }
+});
+
+// GET /api/projects/:id 
+
+// PUT /api/projects/:id
+
+// DELETE /api/projects/:id
+
+
 export default router;
