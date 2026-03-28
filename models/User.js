@@ -1,8 +1,12 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt'
 
 const userSchema = new mongoose.Schema({
 
-  username: String,
+  username: { 
+    type: String, 
+    required: true },
+
   email: {
     type: String,
     unique: true,

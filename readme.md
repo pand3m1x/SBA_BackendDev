@@ -1,6 +1,11 @@
 ❀  Instructions ❀ 
 
-    Fill out later 
+    I added a lot of stuff, but when adding search by task id and delete, does this mean I'll 
+    have to make a new end point? I'll see, but if this note is still here, it's because I have
+    yet to finish the last two routes for this project, and may have not had the time to check that each project/task
+    is user athourized 
+
+    Thanks!
 
 Completion requirements: 
 Ensure your application runs without errors. []
@@ -16,18 +21,18 @@ Before writing any code, plan your data models and API endpoints. Think about th
 
 
 ❀ AUTH ❀ 
-POST /api/users/register
-POST /api/users/login
+POST /api/users/register [x]
+POST /api/users/login [x]
 
 ❀ Projects ❀ 
-GET /api/projects
-POST /api/projects
-GET /api/projects/:id
-PUT /api/projects/:id
-DELETE /api/projects/:id
+GET /api/projects [x]
+POST /api/projects [x]
+GET /api/projects/:id [x]
+PUT /api/projects/:id [x]
+DELETE /api/projects/:id [x]
 
 ❀ Tasks ❀ 
-POST /api/projects/:projectId/tasks
-GET /api/projects/:projectId/tasks
-PUT /api/tasks/:taskId
-DELETE /api/tasks/:taskId
+POST /api/projects/:projectId/tasks [x]
+GET /api/projects/:projectId/tasks [x]
+PUT /api/tasks/:taskId []
+DELETE /api/tasks/:taskId []
