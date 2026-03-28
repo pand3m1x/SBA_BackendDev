@@ -36,11 +36,13 @@ router.post('/login', async (req, res) => {
   if (!correctPw) {
     return res.status(400).json({ message: 'Wrong password!' });
   }
+  
   const token = signToken(user);
   res.json({ token, user });
   console.log({ token, user }); 
 
  }catch(err){
+
   console.log(err.message)
   return res.status(400).json(err);
   
