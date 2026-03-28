@@ -101,5 +101,35 @@ router.put('/:id', async (req,res) => {
 
 // DELETE /api/projects/:id
 
+router.delete('/:id', async (req,res) => {
+
+  try {
+    
+    const newDoc = req.body
+    newDoc.user = req.user._id
+    
+    // This needs an authorization check
+    const checkProject = await Project.findById(req.params.id)
+
+    if(checkProject.user == req.user._id) {
+    const project = await Project.findByIdAndDelete(req.params.id);
+
+    if (!project) {
+
+      return res.status(404).json({ message: 'No project found with this id!' });
+
+    }
+
+    return res.json({ message: 'Project deleted!' })};
+
+  return res.status(403).json({ message: "This project can't be deleted by you!" });
+
+  } catch (err) {
+
+    res.status(500).json(err.message);
+    console.log("drats, project not deleted")
+
+  }
+});
 
 export default router;
