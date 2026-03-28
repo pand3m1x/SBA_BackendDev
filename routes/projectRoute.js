@@ -51,7 +51,7 @@ router.get('/', async (req,res) => {
 // GET /api/projects/:id 
 
 router.get('/:id', async (req,res) => {
-  
+
   try{
 
     const project = await Project.findById(req.params.id)
@@ -67,7 +67,37 @@ router.get('/:id', async (req,res) => {
   }
 });
 
-// PUT /api/projects/:id
+// PUT /api/projects/:id for updating
+
+router.put('/:id', async (req,res) => {
+
+  try{
+
+    const newDoc = req.body
+    newDoc.user = req.user._id
+
+    const checkProject = await Project.findById(req.params.id)
+
+    if(checkProject.user == req.user._id) {
+    const project = await Project.findByIdAndUpdate(req.params.id, req.body, {new:true})
+
+    if (!project) {
+      console.log(err.message)
+      return res.status(404).json({ message: 'No Project found with this id!' });
+    }
+
+    console.log("Project updated!", project)
+    return res.json(project)};
+
+    return res.status(403).json({ message: "This project can't be edited by you!" });
+
+  } catch(err) {
+
+    res.json(500).json(err);
+    console.log(err.message,"Project not found")
+
+  }
+});
 
 // DELETE /api/projects/:id
 
